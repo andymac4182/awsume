@@ -206,6 +206,9 @@ def post_add_arguments(config: dict, arguments: argparse.Namespace, parser: argp
             raise exceptions.ValidationException('Cannot use autoawsume with a given role_arn')
         if arguments.json:
             raise exceptions.ValidationException('Cannot use autoawsume with json')
+    else
+        if not auguments.role_arn and not arguments.json and config.get('auto-refresh'):
+            arguments.auto_refresh = config.get('auto-refresh')
     if arguments.clean:
         _, credentials_file = aws_files_lib.get_aws_files(arguments, config)
         aws_files_lib.remove_expired_output_profiles(credentials_file)

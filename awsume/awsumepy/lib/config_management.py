@@ -16,6 +16,7 @@ defaults = {
     'role-duration': 0,
     'colors': True,
     'fuzzy-match': False,
+    'auto-refresh': False,
 }
 
 
